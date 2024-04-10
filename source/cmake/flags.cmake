@@ -52,7 +52,7 @@ if (CMAKE_CXX_COMPILER_ID MATCHES GNU)
     add_definitions(-D_GNU_SOURCE -DHAVE_BUILTIN_CLEAR_CACHE)
 
 elseif (CMAKE_CXX_COMPILER_ID MATCHES MSVC)
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g -Wall -fexceptions -fno-rtti -Wno-missing-braces")
+    set(CMAKE_C_FLAGS_RELEASE "/MP /MT /O2 /Oi /DNDEBUG /GL")
     set(CMAKE_CXX_FLAGS_RELEASE "/MP /MT /O2 /Oi /DNDEBUG /GL")
 
     set(CMAKE_C_FLAGS_RELWITHDEBINFO "/MP /Ob1 /Zi /DRELWITHDEBINFO")
@@ -65,10 +65,10 @@ elseif (CMAKE_CXX_COMPILER_ID MATCHES Clang)
     set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall")
     set(CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS_RELEASE} -Ofast -funroll-loops -fmerge-all-constants")
 
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g -Wall -fexceptions -fno-rtti -Wno-missing-braces")
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -fexceptions -fno-rtti -Wno-missing-braces")
     set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -Ofast -funroll-loops -fmerge-all-constants")
 
-    if (ARM_TARGET EQUAL 81)
+    if (ARM_TARGET EQUAL 8)
         set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${ARM8_CXX_FLAGS}")
         set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${ARM8_CXX_FLAGS}")
     elseif (ARM_TARGET EQUAL 7)
