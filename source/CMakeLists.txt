@@ -150,6 +150,7 @@ if (WITH_HWLOC)
         )
 
     list(APPEND SOURCES_CRYPTO
+        src/crypto/common/NUMAMemoryPool.cpp
         src/crypto/common/VirtualMemory_hwloc.cpp
         )
 endif()
